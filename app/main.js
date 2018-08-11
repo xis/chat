@@ -4,9 +4,8 @@ const BrowserWindow = electron.BrowserWindow
 const ipc = electron.ipcMain
 const path = require('path')
 const url = require('url')
-
 const isDevelopment = process.env.NODE_ENV !== 'production'
-
+var open = require("open");
 let mainWindow
 
 ipc.on('exit', function(event) {
@@ -57,4 +56,10 @@ function createMainWindow()
     mainWindow.on("closed", function () {
         mainWindow = null;
     })
+
+    // open in default browser when click on link
+    mainWindow.webContents.on('will-navigate', (event, url) => {
+        event.preventDefault()
+        open(url)
+    });
 }
