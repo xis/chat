@@ -3,9 +3,7 @@ const ipc = electron.ipcRenderer;
 const $ = require('jquery');
 const io = require('socket.io-client')
 const anchorme = require('anchorme').default
-
 const socket = io('http://localhost:3000')
-
 
 const msgInput = document.getElementById("messageInput")
 const messageBox = document.getElementById("messageBox")
@@ -32,9 +30,7 @@ function send (input) {
     socket.emit('sendMsg', { input, username })
 }
 
-
 socket.on('msgInbound', function(data) {
-
     var message = document.createElement("div")
     var text = anchorme(data[0],
         {
@@ -49,6 +45,6 @@ socket.on('msgInbound', function(data) {
     username.setAttribute("class","username")
     messageBox.appendChild(message)
     messageBox.appendChild(username)
-    
+    messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight;
 })
 
