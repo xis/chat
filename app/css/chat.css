@@ -24,7 +24,7 @@
 .mymessage {
     width: auto;
     height: auto;
-    max-width: 200px;
+    max-width: 100%;
     word-wrap: break-word;
     border-radius: 10px;
     bottom: 0;
@@ -58,4 +58,10 @@
     padding: 7px;
     font-size: 14px;
     -webkit-app-region: no-drag;
+}
+
+.video 
+{
+    clear: both; 
+    margin-bottom: 5px;
 }

@@ -32,14 +32,31 @@ function send (input) {
 
 socket.on('msgInbound', function(data) {
     var message = document.createElement("div")
+    
     var text = anchorme(data[0],
         {
             truncate: 25 // 25 is the maximum length of the viewed link
         }
     )
+    
     var username = document.createElement("div")
     var usernameText = document.createTextNode("~ " + data[1])
-    message.innerHTML = text;
+    if(data[0].includes("youtube") || data[0].includes("youtu.be")) {
+        var videoid = youtubeID(data[0])
+        if(videoid != data[0]) { // if url does not contains video id exp: youtube.com
+            var videoDiv = document.createElement("div")
+            videoDiv.setAttribute("class","video")
+            var video = document.createElement("iframe")
+            video.setAttribute("width", "360")
+            video.setAttribute("height", "215")
+            video.setAttribute("frameborder", "0")
+            video.setAttribute("src", "https://www.youtube.com/embed/" + videoid)
+            videoDiv.appendChild(video)
+            message.appendChild(videoDiv)
+        }
+    }
+    
+    message.innerHTML = message.innerHTML + text
     username.appendChild(usernameText)
     message.setAttribute("class","mymessage")
     username.setAttribute("class","username")
@@ -48,3 +65,8 @@ socket.on('msgInbound', function(data) {
     messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight;
 })
 
+
+function youtubeID(url){
+    url = url.split(/(vi\/|v%3D|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+    return undefined !== url[2]?url[2].split(/[^0-9a-z_\-]/i)[0]:url[0];
+}
