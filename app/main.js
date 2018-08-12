@@ -16,6 +16,10 @@ ipc.on('minimize', function(event) {
     mainWindow.minimize();
 })
 
+ipc.on('maximize', function(event) {
+    mainWindow.maximize();
+})
+
 app.on("window-all-closed", function () {
     if (process.platform !== "darwin") {
       app.quit();

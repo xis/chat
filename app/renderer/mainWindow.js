@@ -7,6 +7,7 @@ $("#router").hide().load('chat.html').fadeIn('slow')
 
 var exitBtn = document.getElementById('exit')
 var minimizeBtn = document.getElementById('minimize')
+var maximizeBtn = document.getElementById('maximize')
 
 exitBtn.onclick = function() {
     ipc.send('exit')
@@ -14,4 +15,8 @@ exitBtn.onclick = function() {
 
 minimizeBtn.onclick = function() {
     ipc.send('minimize')
+}
+
+maximizeBtn.onclick = function() {
+    ipc.send('maximize')
 }
