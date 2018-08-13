@@ -37,7 +37,8 @@ app.on('ready', createMainWindow)
 function createMainWindow()
 {
     mainWindow = new BrowserWindow({
-        title: 'chat', 
+        title: 'chat',
+        backgroundColor: "#111010",
         minHeight: 500, 
         minWidth: 400,
         //maxHeight: 700,
@@ -47,16 +48,22 @@ function createMainWindow()
         height: 500,
         show: false
     })
+    
     mainWindow.setMenu(null)
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, '/templates/index.html'),
         protocol: 'file',
         slashes: true
     }))
-    mainWindow.webContents.openDevTools()
+
+    if(isDevelopment) {
+        mainWindow.webContents.openDevTools()
+    }
+
     mainWindow.once('ready-to-show', () => {
         mainWindow.show()
     })
+
     mainWindow.on("closed", function () {
         mainWindow = null;
     })
