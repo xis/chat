@@ -5,18 +5,18 @@
 }
  
 ::-webkit-scrollbar-track {
-    border-radius: 10px;
+    border-radius: 00px;
 }
         
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color:#007bff;
+    border-radius: 0px;
+    background-color:#4c00ff;
 }
 
 .messages {
     width: 100%;
     height: 80%;
-    margin-top: 30px;
+    margin-top: 25px;
     overflow: auto;
     -webkit-app-region: no-drag;
 }
@@ -24,13 +24,14 @@
 .mymessage {
     width: auto;
     height: auto;
-    max-width: 100%;
+    max-width: 90%;
     word-wrap: break-word;
     border-radius: 10px;
     bottom: 0;
     background-color: white;
     padding: 8px;
     font-size: 15px;
+    position: relative;
     float: right;
     clear: both;
     margin: 5px 15px 5px;
@@ -52,16 +53,20 @@
     color: white;
     border: 0;
     width: 100%;
-    height: 20%;
-    bottom: 0;
+    height: 16%;
     resize: none;
-    padding: 7px;
+    position: fixed;
+    padding: 9px;
     font-size: 14px;
+    font-family: inherit;
     -webkit-app-region: no-drag;
 }
 
 .video 
 {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
     clear: both; 
     margin-bottom: 5px;
 }

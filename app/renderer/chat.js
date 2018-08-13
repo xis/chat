@@ -32,7 +32,7 @@ function send (input) {
 
 socket.on('msgInbound', function(data) {
     var message = document.createElement("div")
-    
+    message.setAttribute("class","mymessage")
     var text = anchorme(data[0],
         {
             truncate: 25 // 25 is the maximum length of the viewed link
@@ -40,31 +40,31 @@ socket.on('msgInbound', function(data) {
     )
     
     var username = document.createElement("div")
+    username.setAttribute("class","username")
     var usernameText = document.createTextNode("~ " + data[1])
+    
     if(data[0].includes("youtube") || data[0].includes("youtu.be")) {
         var videoid = youtubeID(data[0])
         if(videoid != data[0]) { // if url does not contains video id exp: youtube.com
             var videoDiv = document.createElement("div")
             videoDiv.setAttribute("class","video")
             var video = document.createElement("iframe")
-            video.setAttribute("width", "360")
-            video.setAttribute("height", "215")
             video.setAttribute("frameborder", "0")
+            video.setAttribute("style", "width: 100%; height: 100%; position: absolute;")
             video.setAttribute("src", "https://www.youtube.com/embed/" + videoid)
             videoDiv.appendChild(video)
+            message.setAttribute("style", "width: 60%;")
             message.appendChild(videoDiv)
+            messageBox.appendChild(message)
         }
     }
     
     message.innerHTML = message.innerHTML + text
     username.appendChild(usernameText)
-    message.setAttribute("class","mymessage")
-    username.setAttribute("class","username")
     messageBox.appendChild(message)
     messageBox.appendChild(username)
     messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight;
 })
-
 
 function youtubeID(url){
     url = url.split(/(vi\/|v%3D|v=|\/v\/|youtu\.be\/|\/embed\/)/);
