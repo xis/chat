@@ -56,7 +56,7 @@ socket.on('msgInbound', function(data) {
 
     if(data[0].includes("youtube") || data[0].includes("youtu.be")) {
         var videoid = youtubeID(data[0])
-        if(videoid != data[0]) { // if url does not contains video id exp: youtube.com
+        if(videoid != data[0]) { // create video section if url contains video id
             var videoDiv = document.createElement("div")
             videoDiv.setAttribute("class","video")
             var video = document.createElement("iframe")
