@@ -40,13 +40,20 @@ socket.on('msgInbound', function(data) {
 
     var URLs = linkify.find(data[0])
     if(URLs.length > 0) {
-        text.innerHTML = linkifyHtml(text.innerHTML)
+        text.innerHTML = linkifyHtml(text.innerHTML,{
+            // truncate
+            format: {
+              url: function (value) {
+                return value.length > 40 ? value.slice(0, 40) + '…' : value
+              }
+            }
+        });
     }
 
     var username = document.createElement("div")
     username.setAttribute("class","username")
     var usernameText = document.createTextNode("~ " + data[1])
-    
+
     if(data[0].includes("youtube") || data[0].includes("youtu.be")) {
         var videoid = youtubeID(data[0])
         if(videoid != data[0]) { // if url does not contains video id exp: youtube.com
