@@ -2,13 +2,13 @@ const electron = require('electron');
 const ipc = electron.ipcRenderer;
 const $ = require('jquery');
 const io = require('socket.io-client')
-const anchorme = require('anchorme').default
+var linkify = require('linkifyjs');
+var linkifyHtml = require('linkifyjs/html');
 const socket = io('http://localhost:3000')
 
 const msgInput = document.getElementById("messageInput")
 const messageBox = document.getElementById("messageBox")
 var username = ""
-var result = ""
 
 msgInput.addEventListener("keydown", function(event) {
     if (event.keyCode === 13) {
@@ -33,12 +33,16 @@ function send (input) {
 socket.on('msgInbound', function(data) {
     var message = document.createElement("div")
     message.setAttribute("class","mymessage")
-    var text = anchorme(data[0],
-        {
-            truncate: 25 // 25 is the maximum length of the viewed link
-        }
-    )
-    
+
+    var text = document.createElement('div')
+    var msg = document.createTextNode(data[0])
+    text.appendChild(msg)
+
+    var URLs = linkify.find(data[0])
+    if(URLs.length > 0) {
+        text.innerHTML = linkifyHtml(text.innerHTML)
+    }
+
     var username = document.createElement("div")
     username.setAttribute("class","username")
     var usernameText = document.createTextNode("~ " + data[1])
@@ -58,8 +62,7 @@ socket.on('msgInbound', function(data) {
             messageBox.appendChild(message)
         }
     }
-    
-    message.innerHTML = message.innerHTML + text
+    message.appendChild(text)
     username.appendChild(usernameText)
     messageBox.appendChild(message)
     messageBox.appendChild(username)
