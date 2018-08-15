@@ -1,6 +1,11 @@
-# chat
+<div align="center">
+  <h1>chat</h1>
+
+[![forthebadge](https://forthebadge.com/images/badges/fuck-it-ship-it.svg)](https://forthebadge.com)
+
 a chat app that can highlight URLs and youtube videos. 
 requires socket-io server, set up your socket-io server before start.
+</div>
 
 # to compile
 ```sh
