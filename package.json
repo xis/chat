@@ -4,7 +4,16 @@
   "description": "a chat app",
   "main": "app/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist-win": "build --win"
+  },
+  "build": {
+    "appId": "com.chatapp.chat",
+    "productName": "chat",
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
   },
   "repository": {
     "type": "git",
