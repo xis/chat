@@ -13,15 +13,14 @@ var username = ""
 msgInput.addEventListener("keydown", function(event) {
     if (event.keyCode === 13) {
         event.preventDefault();
-        if(msgInput.value.includes(":username")) {
+        if(msgInput.value.includes("!=username")) {
             var msg = msgInput.value;
-            username = msg.replace(":username ", "")
+            username = msg.replace("!=username ", "")
+            msgInput.value = ""        
+        }
+        if(msgInput.value != "") {
+            send(msgInput.value)
             msgInput.value = ""
-        } else {
-            if(msgInput.value != "") {
-                send(msgInput.value)
-                msgInput.value = ""
-            }
         }
       }
 })
