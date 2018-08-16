@@ -4,7 +4,6 @@ const BrowserWindow = electron.BrowserWindow
 const ipc = electron.ipcMain
 const path = require('path')
 const url = require('url')
-const isDevelopment = process.env.NODE_ENV !== 'production'
 var open = require("open");
 let mainWindow
 
@@ -55,10 +54,6 @@ function createMainWindow()
         protocol: 'file',
         slashes: true
     }))
-
-    if(isDevelopment) {
-        mainWindow.webContents.openDevTools()
-    }
 
     mainWindow.once('ready-to-show', () => {
         mainWindow.show()
