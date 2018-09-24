@@ -1,7 +1,8 @@
+
 <div align="center">
   <h1>chat</h1>
-
-[![forthebadge](https://forthebadge.com/images/badges/fuck-it-ship-it.svg)](https://forthebadge.com)
+  
+  [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
 
 a chat app that can highlight URLs and youtube videos. 
 requires socket-io server, set up your socket-io server before start.
@@ -23,3 +24,7 @@ io.on('connection', function(socket){
     });
 });
 ```
+#
+<div align="center">
+<img src="https://media.giphy.com/media/NRPBeOVORNCJMWj5HW/giphy.gif" width="360" height="390" />
+</div>
