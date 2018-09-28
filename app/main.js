@@ -64,7 +64,7 @@ function createMainWindow()
     })
 
     // open in default browser when click on link
-    mainWindow.webContents.on('will-navigate', (event, url) => {
+    mainWindow.webContents.on('new-window', (event, url) => {
         event.preventDefault()
         open(url)
     });
