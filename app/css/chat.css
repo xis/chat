@@ -71,3 +71,9 @@
     clear: both; 
     margin-bottom: 5px;
 }
+
+.code {
+    margin: 0; 
+    font-size: 12px; 
+    white-space: pre-wrap;
+}
