@@ -24,7 +24,14 @@ io.on('connection', function(socket){
     });
 });
 ```
-#
+
+# commands
+| command  | for what |
+| ------------- | ------------- |
+| /username  | to set your username  |
+| /code  | send code  |
+
+# preview
 <div align="center">
 <img src="https://media.giphy.com/media/NRPBeOVORNCJMWj5HW/giphy.gif" width="360" height="390" />
 </div>
