@@ -10,8 +10,7 @@ const socket = io('http://localhost:3000')
 
 const msgInput = document.getElementById("messageInput")
 const messageBox = document.getElementById("messageBox")
-var username = ""
-var type = ""
+var username = "", type = ""
 
 msgInput.addEventListener("keydown", function(event) {
     if (event.keyCode === 13) {
@@ -40,6 +39,7 @@ msgInput.addEventListener("keydown", function(event) {
       }
 })
 
+// Sends input to socket-io server
 function send (input) {
     socket.emit('sendMsg', { input, username, type })
 }
