@@ -29,7 +29,7 @@ io.on('connection', function(socket){
 | command  | for what |
 | ------------- | ------------- |
 | /username  | to set your username  |
-| /code  | send code  |
+| /code  | to send code  |
 
 # preview
 <div align="center">
