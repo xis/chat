@@ -31,8 +31,3 @@ io.on('connection', function(socket){
 | ------------- | ------------- |
 | /username  | to set your username  |
 | /code  | to send code  |
-
-# preview
-<div align="center">
-<img src="https://media.giphy.com/media/NRPBeOVORNCJMWj5HW/giphy.gif" width="360" height="390" />
-</div>
