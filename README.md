@@ -21,7 +21,7 @@ npm start
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('sendMsg', function(value){
-        io.sockets.emit('msgInbound', [ value.input, value.username, value.type ])
+        io.sockets.emit('msgInbound', [ value.input, value.myName, value.type ])
     });
 });
 ```
