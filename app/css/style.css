@@ -14,7 +14,8 @@ html, body{
 
 a {
     text-decoration: none;
-    color: #d1008b;
+    color: #a59a9d;
+    font-weight: 600;
 }
 
 ::selection {

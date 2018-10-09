@@ -8,7 +8,7 @@ const socket = io('http://localhost:3000')
 
 const msgInput = document.getElementById("messageInput")
 const messageBox = document.getElementById("messageBox")
-var username = "", type = ""
+var myName = "", type = ""
 
 socket.on('msgInbound', function(data) {
     createMessageBox(data)
@@ -24,7 +24,7 @@ msgInput.addEventListener("keydown", function(event) {
             type = "text"
             switch (firstWord) {
                 case "/username":
-                username = msgInput.value.replace("/username ", "")
+                myName = msgInput.value.replace("/username ", "")
                 type = "set-username"
                 break;
                 case "/code": 
@@ -42,7 +42,7 @@ msgInput.addEventListener("keydown", function(event) {
 
 // Sends input to socket-io server
 function send (input) {
-    socket.emit('sendMsg', { input, username, type })
+    socket.emit('sendMsg', { input, myName, type })
 }
 
 function createMessageBox(data) {
@@ -69,19 +69,28 @@ function createMessageBox(data) {
     username.setAttribute("class","username")
     var usernameText = document.createTextNode("~ " + data[1])
 
+    // if message belongs to me or another user
+    if (myName == data[1]) {
+        message.setAttribute("style", "float: right;")
+        username.setAttribute("style", "float: right;")
+    } else {
+        message.setAttribute("style", "float: left;")
+        username.setAttribute("style", "float: left;")
+    }
+
     // Check for youtube video and be sure that message type is text
     if (data[2] == "text" && (data[0].includes("youtube") || data[0].includes("youtu.be"))) {
         var videoid = youtubeID(data[0])
         if(videoid != data[0]) { // create video section if url contains video id
             var videoDiv = document.createElement("div")
             videoDiv.setAttribute("class","video")
-            var video = document.createElement("iframe")
-            video.setAttribute("frameborder", "0")
-            video.setAttribute("style", "width: 100%; height: 100%; position: absolute;")
-            video.setAttribute("src", "https://www.youtube.com/embed/" + videoid)
-            videoDiv.appendChild(video)
-            message.setAttribute("style", "width: 60%;")
+            var iframe = document.createElement("iframe")
+            iframe.setAttribute("frameborder", "0")
+            iframe.setAttribute("style", "width: 100%; height: 100%; position: absolute;")
+            iframe.setAttribute("src", "https://www.youtube.com/embed/" + videoid)
+            videoDiv.appendChild(iframe)            
             message.appendChild(videoDiv)
+            message.setAttribute("style", message.getAttribute("style") + "width: 60%;")
             messageBox.appendChild(message)
         }
     }
@@ -97,6 +106,7 @@ function createMessageBox(data) {
     } else {
         message.appendChild(textDiv)   
     }
+    
     username.appendChild(usernameText)
     messageBox.appendChild(message)
     messageBox.appendChild(username)

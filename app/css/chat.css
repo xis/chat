@@ -26,13 +26,12 @@
     height: auto;
     max-width: 90%;
     word-wrap: break-word;
-    border-radius: 10px;
     bottom: 0;
-    background-color: white;
+    color: rgb(209, 198, 198);
+    background-color: #1e1c1c;
     padding: 8px;
     font-size: 15px;
     position: relative;
-    float: right;
     clear: both;
     margin: 5px 15px 5px;
     -webkit-app-region: no-drag;
@@ -41,9 +40,9 @@
 .username {
     color: rgba(199, 198, 198, 0.623); 
     font-size: 12px; 
-    float: right; 
     clear: both; 
     margin-right: 20px;
+    margin-left: 20px;
     margin-bottom: 5px;
 }
 
