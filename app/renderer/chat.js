@@ -1,5 +1,3 @@
-const electron = require('electron');
-const ipc = electron.ipcRenderer;
 const $ = require('jquery');
 const _ = require('underscore')
 const io = require('socket.io-client')
@@ -12,12 +10,15 @@ const msgInput = document.getElementById("messageInput")
 const messageBox = document.getElementById("messageBox")
 var username = "", type = ""
 
+socket.on('msgInbound', function(data) {
+    createMessageBox(data)
+})
+
 msgInput.addEventListener("keydown", function(event) {
     if (event.keyCode === 13) {
         event.preventDefault();
         if(msgInput.value != "") {
             var message = msgInput.value
-
             // get first word and check if it is command or not // this is bad.
             var firstWord = _.first( msgInput.value.split(" ") )
             type = "text"
@@ -44,16 +45,16 @@ function send (input) {
     socket.emit('sendMsg', { input, username, type })
 }
 
-socket.on('msgInbound', function(data) {
+function createMessageBox(data) {
     var message = document.createElement("div")
     message.setAttribute("class","mymessage")
-    var text = document.createElement('div')
-    var msg = document.createTextNode(data[0])
-    text.appendChild(msg)
+    var textDiv = document.createElement('div')
+    var text = document.createTextNode(data[0])
+    textDiv.appendChild(text)
 
     var URLs = linkify.find(data[0])
     if(URLs.length > 0) {
-        text.innerHTML = linkifyHtml(text.innerHTML,{
+        textDiv.innerHTML = linkifyHtml(textDiv.innerHTML,{
             // truncate
             format: {
               url: function (value) {
@@ -89,18 +90,18 @@ socket.on('msgInbound', function(data) {
     if(data[2] == "code") {
         var pre = document.createElement("pre")
         pre.setAttribute("class", "code")
-        pre.appendChild(text)
+        pre.appendChild(textDiv)
         message.setAttribute("style", "background-color: #131513;")
         message.appendChild(pre)
         hljs.highlightBlock(pre)
     } else {
-        message.appendChild(text)   
+        message.appendChild(textDiv)   
     }
     username.appendChild(usernameText)
     messageBox.appendChild(message)
     messageBox.appendChild(username)
     messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight;
-})
+}
 
 function youtubeID(url){
     url = url.split(/(vi\/|v%3D|v=|\/v\/|youtu\.be\/|\/embed\/)/);

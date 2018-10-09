@@ -2,6 +2,7 @@ const electron = require('electron');
 const ipc = electron.ipcRenderer;
 const $ = require('jquery');
 
+// loads html page to #router div
 $("#router").hide().load('chat.html').fadeIn('slow')
 
 var exitBtn = document.getElementById('exit')
