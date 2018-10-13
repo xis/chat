@@ -100,7 +100,7 @@ function createMessageBox(data) {
         var pre = document.createElement("pre")
         pre.setAttribute("class", "code")
         pre.appendChild(textDiv)
-        message.setAttribute("style", "background-color: #131513;")
+        message.setAttribute("style", message.getAttribute("style") + "background-color: #131513;")
         message.appendChild(pre)
         hljs.highlightBlock(pre)
     } else {
