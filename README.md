@@ -6,7 +6,6 @@
 
 a chat app that can highlight URLs, youtube videos and codes. 
 requires socket-io server, set up your socket-io server before start.
-[Demo](http://176.98.42.84)
 </div>
 
 # to compile
