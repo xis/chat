@@ -10,7 +10,7 @@ requires socket-io server, set up your socket-io server before start.
 
 # to compile
 ```sh
-git clone https://github.com/fopeak/chat.git
+git clone https://github.com/palmhead/chat.git
 cd chat
 npm install
 npm start
