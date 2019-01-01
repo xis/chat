@@ -4,7 +4,8 @@
   
   [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
 
-a chat app that can highlight URLs, youtube videos and codes. 
+a chat app
+
 requires socket-io server, set up your socket-io server before start.
 </div>
 
@@ -30,3 +31,8 @@ io.on('connection', function(socket){
 | ------------- | ------------- |
 | /username  | to set your username  |
 | /code  | to send code  |
+
+# 
+<div align="center">
+    <img src="app.gif">
+</div>
