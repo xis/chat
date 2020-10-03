@@ -11,7 +11,7 @@ requires socket-io server, set up your socket-io server before start.
 
 # to compile
 ```sh
-git clone https://github.com/xepea/chat.git
+git clone https://github.com/xis/chat.git
 cd chat
 npm install
 npm start
