@@ -6,7 +6,7 @@
 
 a chat app
 
-requires socket-io server, set up your socket-io server before start...
+requires socket-io server, set up your socket-io server before start.
 </div>
 
 # to compile
