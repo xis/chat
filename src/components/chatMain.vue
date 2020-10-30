@@ -47,11 +47,11 @@ export default {
   },
   methods: {
     sendMessage() {
-      //if (this.message != "") {
+      if (this.message != "") {
       this.messages.message = this.currentText;
       this.currentText = null;
 
-      //}
+      }
     },
   },
 };
