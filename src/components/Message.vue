@@ -53,10 +53,10 @@ export default {
   white-space: pre-wrap;
 }
 .mesajKutusu {
-  width: 50%;
+  width: 35%;
   text-align: start;
-  color: aqua;
+  color: red;
   border-color: white;
-  border-width: 10px;
+  border-width: 5px;
 }
 </style>
